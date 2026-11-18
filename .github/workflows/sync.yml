@@ -1,0 +1,16 @@
+name: Sync Fork Automatico
+on:
+  schedule:
+    - cron: '0 0 * * *' # Viene eseguito automaticamente ogni notte a mezzanotte
+  workflow_dispatch: # Permette anche l'avvio manuale
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sincronizza con l'originale
+        uses: tgymnich/fork-sync@v1.6.3
+        with:
+          owner: hxreborn
+          base: main
+          head: main
+          merge_method: merge
